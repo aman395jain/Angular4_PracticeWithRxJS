@@ -1,0 +1,20 @@
+<p>
+  Registeration Form
+</p>
+
+<form class="form-group" [formGroup] = 'registerForm' (ngSubmit)="send()">
+
+  <div class="form-group">
+    <label class="registerSter">Name</label>
+    <input formControlName="name" type="text" class="formClass form-control">
+  <small *ngIf="name.invalid" class="form-text">Enter a Name</small>
+  </div>
+
+  <div class="form-group">
+    <label class="registerSter">Email</label>
+    <input formControlName="email" type="text" class="formClass form-control
+">
+    <small *ngIf="email.invalid" class="form-text">Enter a valid Email</small>
+  </div>
+  <button class="btn btn-group" type="submit" [disabled]="!registerForm.valid">Submit</button>
+</form>

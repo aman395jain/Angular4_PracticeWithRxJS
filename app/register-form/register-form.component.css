@@ -1,0 +1,23 @@
+.formClass {
+    width: 400px;
+}
+
+p {
+    position: relative;
+    text-align: center;
+    color: red;
+    font-size: x-large;
+}
+
+form {
+    position: absolute;
+    margin-left: 30px;
+}
+
+.form-text {
+    color: red;
+}
+
+.registerSter:after {
+    content: '*';
+}
