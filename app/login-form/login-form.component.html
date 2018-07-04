@@ -1,10 +1,10 @@
 <div>
     <p>
-        Registeration Form
+        Login Form
     </p>
 </div>
 <div>
-    <form class="form-group" [formGroup]='registerForm' (ngSubmit)="send()">
+    <form class="form-group" [formGroup]="loginForm" (ngSubmit)="send()">
 
         <div class="form-group">
             <label class="loginStar">Name</label>
@@ -18,12 +18,6 @@
 ">
             <small *ngIf="email.invalid" class="form-text">Enter a valid Email</small>
         </div>
-        <div class="form-group">
-            <label class="loginStar">Password</label>
-            <input formControlName="password" type="password" class="formClass form-control">
-            <small *ngIf="password.invalid" class="form-text">Enter Password</small>
-        </div>
-
-        <button class="btn btn-group" type="submit" [disabled]="!registerForm.valid">Submit</button>
+        <button class="btn btn-group" type="submit" [disabled]="!loginForm.valid">Submit</button>
     </form>
 </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {DataFromRegisterationFormService} from './data-from-registeration-form.service'
 
 @Component({
     moduleId: module.id,
@@ -10,13 +11,15 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Valid
 export class RegisterFormComponent {
     public registerForm: FormGroup;
 
-    constructor(fb: FormBuilder) {
+    constructor(fb: FormBuilder, private dataFromRegisterationFormService: DataFromRegisterationFormService) {
         this.registerForm = fb.group({
             name: [null, Validators.required],
-            email: new FormControl('', [Validators.required, patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])
+            email: new FormControl('', [Validators.required, patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]),
+            password: new FormControl('', [Validators.required, Validators.minLength(6), patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])
         });
 
-        //this.send();
+
+        this.dataFromRegisterationFormService.sharedDataViaService(this.registerForm.value);
     }
 
     get name() {
@@ -27,9 +30,14 @@ export class RegisterFormComponent {
         return this.registerForm.get('email') as FormControl;
     }
 
-    send(){
-      console.log(this.registerForm.value);
-  }
+    get password() {
+        return this.registerForm.get('password') as FormControl;
+    }
+
+    send() {
+        console.log(this.registerForm.value);
+        this.dataFromRegisterationFormService.sharedDataViaService(this.registerForm.value);
+    }
 
 }
 

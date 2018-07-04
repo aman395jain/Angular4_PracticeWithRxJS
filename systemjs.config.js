@@ -24,7 +24,7 @@
     'platform-browser',
     'platform-browser-dynamic',
     'router',
-    'upgrade',
+    'upgrade'
   ];
 
   // Individual files (~300 requests):

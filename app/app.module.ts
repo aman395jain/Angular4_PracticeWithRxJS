@@ -11,6 +11,8 @@ import { ObservePageComponent } from './observe-page/observe-page.component';
 
 import { ProductService } from './products/product.service';
 import {RegisterFormComponent} from "./register-form/register-form.component";
+import {DataFromRegisterationFormService} from "./register-form/data-from-registeration-form.service";
+import {LoginFormComponent} from "./login-form/login-form.component";
 
 @NgModule({
     imports: [BrowserModule,
@@ -23,9 +25,11 @@ import {RegisterFormComponent} from "./register-form/register-form.component";
         ProductComponent,
         RegisterFormComponent,
         NavbarComponent,
-        ObservePageComponent
+        ObservePageComponent,
+        LoginFormComponent
     ],
-    providers: [ProductService],
+    providers: [ProductService,
+        DataFromRegisterationFormService],
     bootstrap: [AppComponent]
 })
 
