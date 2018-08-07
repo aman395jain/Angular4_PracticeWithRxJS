@@ -13,6 +13,7 @@ import { ProductService } from './products/product.service';
 import {RegisterFormComponent} from "./register-form/register-form.component";
 import {DataFromRegisterationFormService} from "./register-form/data-from-registeration-form.service";
 import {LoginFormComponent} from "./login-form/login-form.component";
+import {SelectCheckboxDirective} from "./directive/select-checkbox.directive";
 
 @NgModule({
     imports: [BrowserModule,
@@ -29,7 +30,9 @@ import {LoginFormComponent} from "./login-form/login-form.component";
         LoginFormComponent
     ],
     providers: [ProductService,
-        DataFromRegisterationFormService],
+        DataFromRegisterationFormService,
+        SelectCheckboxDirective],
+
     bootstrap: [AppComponent]
 })
 

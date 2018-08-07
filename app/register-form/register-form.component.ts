@@ -15,7 +15,8 @@ export class RegisterFormComponent {
         this.registerForm = fb.group({
             name: [null, Validators.required],
             email: new FormControl('', [Validators.required, patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]),
-            password: new FormControl('', [Validators.required, Validators.minLength(6), patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])
+            password: new FormControl('', [Validators.required, Validators.minLength(6), patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]),
+            confPassword: new FormControl('', [Validators.required, Validators.minLength(6), patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])
         });
 
 
@@ -34,6 +35,10 @@ export class RegisterFormComponent {
         return this.registerForm.get('password') as FormControl;
     }
 
+    get confPassword() {
+        return this.registerForm.get('confPassword') as FormControl;
+
+    }
     send() {
         console.log(this.registerForm.value);
         this.dataFromRegisterationFormService.sharedDataViaService(this.registerForm.value);
@@ -49,4 +54,14 @@ function patternValidator(regexp: RegExp): ValidatorFn {
         }
         return !regexp.test(value) ? {'patternInvalid': {regexp}} : null;
     };
+}
+
+
+function passwordConfirming(control: AbstractControl): void {
+    if (control.get('password').value !== control.get('confPassword').value) {
+        console.log("password match")
+       // return {invalid: true};
+    } else {
+        console.log("password doesn't match")
+    }
 }

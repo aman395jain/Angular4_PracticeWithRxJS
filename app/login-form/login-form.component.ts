@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {DataFromRegisterationFormService} from "../register-form/data-from-registeration-form.service";
+import {Router} from "@angular/router";
+
 
 @Component({
     moduleId: module.id,
@@ -12,17 +14,22 @@ export class LoginFormComponent {
 
     public loginForm: FormGroup;
 
-    constructor(fb: FormBuilder, private dataFromRegisterationFormService:DataFromRegisterationFormService) {
+    constructor(fb: FormBuilder, private dataFromRegisterationFormService:DataFromRegisterationFormService, private router: Router) {
         this.loginForm = fb.group({
-            name: [null, Validators.required],
+            loginName: [null, Validators.required],
             email: new FormControl('', [Validators.required, patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])
         });
 
         this.dataFromRegisterationFormService.sharedDataViaService(this.loginForm.value);
+
     }
 
-    get name() {
-        return this.loginForm.get('name') as FormControl;
+    btnToObservePage= function () {
+        this.router.navigate(['/observePage'], {queryParams: {name: this.loginName._value}})
+    };
+
+    get loginName() {
+        return this.loginForm.get('loginName') as FormControl;
     }
 
     get email() {
@@ -31,6 +38,7 @@ export class LoginFormComponent {
 
     send(){
         console.log(this.loginForm.value);
+        //this.router.navigate(['/observePage'], {queryParams: {name: this.loginName}})
         this.dataFromRegisterationFormService.sharedDataViaService(this.loginForm.value);
     }
 

@@ -21,7 +21,14 @@
         <div class="form-group">
             <label class="loginStar">Password</label>
             <input formControlName="password" type="password" class="formClass form-control">
-            <small *ngIf="password.invalid" class="form-text">Enter Password</small>
+            <small *ngIf="password.pristine && password.invalid; else secondCondition" class="form-text">Enter Password</small>
+            <ng-template #secondCondition class="form-text">Enter valid Password</ng-template>
+
+        </div>
+        <div class="form-group">
+            <label class="loginStar">Confirm Password</label>
+            <input formControlName="confPassword" type="password" class="formClass form-control">
+            <small *ngIf="confPassword.invalid" class="form-text">Re-enter Password</small>
         </div>
 
         <button class="btn btn-group" type="submit" [disabled]="!registerForm.valid">Submit</button>

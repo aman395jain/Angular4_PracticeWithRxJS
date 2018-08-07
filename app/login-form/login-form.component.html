@@ -8,8 +8,8 @@
 
         <div class="form-group">
             <label class="loginStar">Name</label>
-            <input formControlName="name" type="text" class="formClass form-control">
-            <small *ngIf="name.invalid" class="form-text">Enter a Name</small>
+            <input formControlName="loginName" type="text" class="formClass form-control">
+            <small *ngIf="loginName.invalid" class="form-text">Enter a Name</small>
         </div>
 
         <div class="form-group">
@@ -18,6 +18,7 @@
 ">
             <small *ngIf="email.invalid" class="form-text">Enter a valid Email</small>
         </div>
-        <button class="btn btn-group" type="submit" [disabled]="!loginForm.valid">Submit</button>
+        <button class="btn btn-group btn-primary" routerLink="/observePage" (click)= btnToObservePage() [queryParams]="{name: loginName}" type="submit" [disabled]="!loginForm.valid">Submit</button>
     </form>
 </div>
+
