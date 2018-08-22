@@ -38,7 +38,9 @@ export class ObservePageComponent implements OnInit{
         this.stateParameters = this.route.snapshot.queryParamMap.get('name')
         console.log(this.stateParameters)
     }
-
+    btnToUserDescription= function () {
+        //this.router.navigate(['/userDiscription'])
+    };
     getDataUrl = function () :any{
         var _observeUrl = "https://jsonplaceholder.typicode.com/users";
         this.http.get(_observeUrl).subscribe((res: Response) => {
