@@ -45,7 +45,7 @@ export class LoginFormComponent {
 }
 
 function patternValidator(regexp: RegExp): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } => {
+    return (control: AbstractControl): any => {
         const value = control.value;
         if (value === '') {
             return null;

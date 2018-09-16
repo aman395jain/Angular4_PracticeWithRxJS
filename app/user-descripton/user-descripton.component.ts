@@ -13,5 +13,8 @@ export class UserDescriptonComponent implements OnInit {
 
   ngOnInit() {
   }
+    navigateToUserNestedComp = () => {
+      this.router.navigate(['/userDiscription/userDiscriptionNested'])
+    }
 
 }
