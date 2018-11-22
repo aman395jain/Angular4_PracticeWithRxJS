@@ -18,7 +18,7 @@
 ">
             <small *ngIf="email.invalid" class="form-text">Enter a valid Email</small>
         </div>
-        <button class="btn btn-group btn-primary" routerLink="/observePage" (click)= btnToObservePage() [queryParams]="{name: loginName}" type="submit" [disabled]="!loginForm.valid">Submit</button>
+        <button class="btn btn-group btn-primary" routerLink="/observePage" (click)= btnToObservePage() [queryParams]="{name: loginName}" type="button" [disabled]="!loginForm.valid">Submit</button>
     </form>
 </div>
 

@@ -1,20 +1,23 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AppRoutingModule } from './app.routing';
+import {AppRoutingModule} from './app.routing';
 
-import { AppComponent } from './app.component';
-import { HttpModule } from '@angular/http';
-import { ProductComponent } from './products/product.component';
-import { NavbarComponent } from './nav/nav.component';
-import { ObservePageComponent } from './observe-page/observe-page.component';
+import {AppComponent} from './app.component';
+import {HttpModule} from '@angular/http';
+import {ProductComponent} from './products/product.component';
+import {NavbarComponent} from './nav/nav.component';
+import {ObservePageComponent} from './observe-page/observe-page.component';
 
-import { ProductService } from './products/product.service';
+import {ProductService} from './products/product.service';
 import {RegisterFormComponent} from "./register-form/register-form.component";
 import {DataFromRegisterationFormService} from "./register-form/data-from-registeration-form.service";
 import {LoginFormComponent} from "./login-form/login-form.component";
 import {SelectCheckboxDirective} from "./directive/select-checkbox.directive";
 import {UserDescriptionModule} from "./user-description-module/user-description-module.module";
+import {loginCanActivate} from "./Guard/loginCanActivate";
+import { UserDescriptonComponentChildComponent } from './app/user-descripton-component-child/user-descripton-component-child.component';
+
 
 @NgModule({
     imports: [BrowserModule,
@@ -33,9 +36,11 @@ import {UserDescriptionModule} from "./user-description-module/user-description-
     ],
     providers: [ProductService,
         DataFromRegisterationFormService,
-        SelectCheckboxDirective],
+        SelectCheckboxDirective,
+        loginCanActivate],
 
     bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}

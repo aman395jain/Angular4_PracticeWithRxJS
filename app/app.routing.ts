@@ -4,6 +4,7 @@ import {ProductComponent} from './products/product.component';
 import {RegisterFormComponent} from "./register-form/register-form.component";
 import {ObservePageComponent} from "./observe-page/observe-page.component";
 import {LoginFormComponent} from "./login-form/login-form.component";
+import {loginCanActivate} from "./Guard/loginCanActivate";
 
 @NgModule({
     imports: [
@@ -11,7 +12,7 @@ import {LoginFormComponent} from "./login-form/login-form.component";
             {path: '', component: ProductComponent},
             {path: 'register', component: RegisterFormComponent},
             {path: 'login', component: LoginFormComponent},
-            {path: 'observePage', component: ObservePageComponent}
+            {path: 'observePage', component: ObservePageComponent, canActivate: [loginCanActivate]}
 
         ], {preloadingStrategy: PreloadAllModules})
     ],

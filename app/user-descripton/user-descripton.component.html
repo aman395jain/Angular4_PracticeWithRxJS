@@ -1,12 +1,40 @@
-<div class="container col-lg-12" *ngIf="IsHidden">
-    <div class="col-md-6">
-        <p>
-            Hi!!!!!!!!!!! We are in User Description Module.
-        </p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 backToObserverPage">
+            <button class="btn bg-primary" (click)="backToObserverPage()"> back to observer page</button>
+        </div>
+        <div class="col-lg-12" *ngIf="IsHidden">
+            <div class="col-md-6">
+                <p>
+                    Hi!!!!!!!!!!! We are in User Description Module.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-default" (click)="navigateToUserNestedComp()">navigateToUserNestedComp</button>
+
+            </div>
+        </div>
     </div>
-    <div class="col-md-6">
-        <button class="btn btn-default" (click)="navigateToUserNestedComp()">navigateToUserNestedComp</button>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-6"><user-descripton-component-child [major]="major"></user-descripton-component-child></div>
+
 
     </div>
 </div>
+
+
+<!--<div *CarouselDirective="let image of images; let ctrl = controller">-->
+<!--<button (click)="ctrl.prev()" class="left-button">-->
+<!--navigate_before-->
+<!--</button>-->
+<!--<main>-->
+<!--<img [src]="image.url">-->
+<!--<p>{{ image.description }}</p>-->
+<!--</main>-->
+<!--<button (click)="ctrl.next()" class="right-button">-->
+<!--navigate_next-->
+<!--</button>-->
+<!--</div>-->
+
+<div style="display: none">{{IsHidden}}</div>
 <router-outlet></router-outlet>
