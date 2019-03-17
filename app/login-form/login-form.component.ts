@@ -28,9 +28,10 @@ console.log(activatedRoute);
     }
 
 
-    btnToObservePage= function () {
+    btnToObservePage= function (loginName) {
         this.router.navigate(['/observePage'], {queryParams: {name: this.loginName._value}})
         localStorage.setItem('lName', this.loginForm.value.loginName)
+        console.log(loginName)
     };
 
     get loginName() {

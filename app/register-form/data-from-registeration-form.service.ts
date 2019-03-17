@@ -9,6 +9,7 @@ private sharedData : any;
     sharedDataViaService(data:any): Observable<any>{
             console.log(data);
             this.sharedData = data;
+            console.log(of(this.sharedData))
         return of(this.sharedData);
 
     }

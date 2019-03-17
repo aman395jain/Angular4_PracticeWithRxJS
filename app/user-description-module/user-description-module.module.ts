@@ -5,6 +5,7 @@ import {UserDescriptonComponent} from "../user-descripton/user-descripton.compon
 import {UserDescriptionNestedComponent} from "../app/user-description-nested/user-description-nested.component";
 import {CarouselDirective} from "../directive/CarouselDirective";
 import {UserDescriptonComponentChildComponent} from "../app/user-descripton-component-child/user-descripton-component-child.component";
+import {SearchBoxDirective} from "../app/search-box.directive";
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import {UserDescriptonComponentChildComponent} from "../app/user-descripton-comp
     declarations: [UserDescriptonComponent,
         UserDescriptionNestedComponent,
         UserDescriptonComponentChildComponent,
-        CarouselDirective
+        CarouselDirective,
+        SearchBoxDirective
         ],
     providers : []
 })
